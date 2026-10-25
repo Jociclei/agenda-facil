@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#176b70">
+  <meta name="description" content="Agenda Fácil: solicite atendimentos e organize serviços em um só lugar.">
+  <title>Agenda Fácil | Agendamentos simples</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Agenda Fácil - início"><span class="brand-mark">A</span><span>Agenda<span class="brand-light">Fácil</span></span></a>
+    <nav><a href="#servicos">Serviços</a><a href="#como-funciona">Como funciona</a><button class="button button-small button-outline" id="openAdmin">Painel do profissional</button></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="dot"></span> SUA ROTINA, MAIS ORGANIZADA</span>
+        <h1>Seu próximo atendimento começa <em>por aqui.</em></h1>
+        <p>Consulte os serviços, escolha um horário e envie sua solicitação de forma simples. O profissional confirma o atendimento com você.</p>
+        <a class="button" href="#agendar">Solicitar agendamento <span aria-hidden="true">→</span></a>
+        <div class="trust-line"><span class="check">✓</span> Simples, prático e sem complicação</div>
+      </div>
+      <div class="hero-visual" aria-label="Resumo ilustrativo de agendamento">
+        <div class="decor decor-one"></div><div class="decor decor-two"></div>
+        <div class="schedule-card">
+          <div class="schedule-top"><div><small>AGENDA FÁCIL</small><h3>Seu atendimento</h3></div><span class="calendar-icon">▦</span></div>
+          <div class="schedule-date"><span>SEG</span><strong>26</strong><span>OUT</span></div>
+          <div class="schedule-item"><span class="service-icon">✦</span><div><strong>Serviço personalizado</strong><small>Horário solicitado</small></div><span class="status">Pendente</span></div>
+          <div class="schedule-note"><span>✓</span> Você recebe a confirmação diretamente do profissional.</div>
+        </div>
+        <div class="floating-badge"><span>✳</span><div><strong>Mais organização</strong><small>Um passo de cada vez</small></div></div>
+      </div>
+    </section>
+
+    <section class="section services-section" id="servicos">
+      <div class="section-heading"><div><span class="eyebrow">CONHEÇA AS OPÇÕES</span><h2>Serviços em destaque</h2></div><p>Estes serviços são exemplos demonstrativos. O profissional pode adaptar os nomes, preços e durações.</p></div>
+      <div class="service-grid" id="serviceGrid"></div>
+    </section>
+
+    <section class="section how-section" id="como-funciona">
+      <div class="section-heading centered"><span class="eyebrow">SEM COMPLICAÇÃO</span><h2>Como funciona?</h2><p>Três passos para solicitar seu atendimento.</p></div>
+      <div class="steps">
+        <article><span class="step-number">01</span><div class="step-icon">▤</div><h3>Escolha o serviço</h3><p>Veja as opções e escolha aquela que combina com sua necessidade.</p></article>
+        <article><span class="step-number">02</span><div class="step-icon">▦</div><h3>Peça um horário</h3><p>Preencha seus dados e informe a data e o horário desejados.</p></article>
+        <article><span class="step-number">03</span><div class="step-icon">♡</div><h3>Aguarde a confirmação</h3><p>O profissional verifica a disponibilidade e confirma com você.</p></article>
+      </div>
+    </section>
+
+    <section class="booking-wrap" id="agendar">
+      <div class="booking-intro"><span class="eyebrow">VAMOS COMEÇAR?</span><h2>Solicite seu agendamento</h2><p>Preencha os campos abaixo. Sua solicitação ficará pendente até que o profissional confirme o horário.</p><div class="privacy-note"><span>🔒</span><span>Utilize dados fictícios durante os testes deste MVP. Esta versão é demonstrativa.</span></div></div>
+      <form id="bookingForm" class="booking-form">
+        <label>Seu nome<input name="name" required maxlength="80" placeholder="Como podemos chamar você?"></label>
+        <label>Telefone / WhatsApp<input name="phone" required maxlength="25" placeholder="(00) 00000-0000"></label>
+        <label>Serviço<select name="serviceId" id="serviceSelect" required><option value="">Selecione um serviço</option></select></label>
+        <div class="form-row"><label>Data desejada<input name="date" id="dateInput" type="date" required></label><label>Horário desejado<select name="time" required><option value="">Escolha</option><option>08:00</option><option>09:00</option><option>10:00</option><option>11:00</option><option>13:00</option><option>14:00</option><option>15:00</option><option>16:00</option><option>17:00</option></select></label></div>
+        <label>Observações <span class="optional">(opcional)</span><textarea name="notes" maxlength="300" rows="3" placeholder="Conte algo que o profissional precisa saber"></textarea></label>
+        <button class="button button-full" type="submit">Enviar solicitação <span>→</span></button>
+        <p class="form-footnote">Ao enviar, você solicita um horário; isso não significa que ele já está confirmado.</p>
+        <div id="formMessage" class="form-message" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="admin-panel hidden" id="adminPanel">
+      <div class="admin-heading"><div><span class="eyebrow">ÁREA DEMONSTRATIVA</span><h2>Painel do profissional</h2><p>Os dados ficam salvos somente neste navegador nesta versão de demonstração.</p></div><button class="button button-outline" id="closeAdmin">Fechar painel</button></div>
+      <div class="demo-warning">⚠️ Demonstração educacional: este painel não possui autenticação real nem deve ser usado com dados pessoais reais.</div>
+      <div class="stats" id="stats"></div>
+      <div class="admin-toolbar"><h3>Solicitações recebidas</h3><select id="statusFilter" aria-label="Filtrar por status"><option value="all">Todos os status</option><option value="Pendente">Pendentes</option><option value="Confirmado">Confirmados</option><option value="Concluído">Concluídos</option><option value="Cancelado">Cancelados</option></select></div>
+      <div class="appointments-list" id="appointmentsList"></div>
+      <div class="admin-services"><h3>Serviços demonstrativos</h3><form id="serviceForm" class="service-form"><label>Nome<input name="title" required maxlength="70" placeholder="Nome do serviço"></label><label>Preço (R$)<input name="price" type="number" min="0" step="0.01" required placeholder="50,00"></label><label>Duração (min)<input name="duration" type="number" min="5" step="5" required value="30"></label><button class="button" type="submit">Adicionar serviço</button></form><div id="adminServiceList"></div></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">A</span><span>Agenda<span class="brand-light">Fácil</span></span></a><p>Uma maneira simples de organizar solicitações de atendimento.</p><small>Projeto educacional desenvolvido para o desafio DIO. Dados e serviços demonstrativos.</small></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
